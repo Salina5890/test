@@ -1,0 +1,1135 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naingalaxie - Home</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Page Container */
+        .page-container {
+            display: none;
+        }
+        
+        .page-container.active {
+            display: block;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-item p {
+            font-size: 1.2rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background-color: #f0f4f8;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Content */
+        .about-content {
+            padding: 5rem 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .about-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .about-card p {
+            color: #666;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #6a11cb;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+            background-color: #f0f4f8;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-info p {
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 5rem 0;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: #6a11cb;
+            margin-bottom: 1.5rem;
+        }
+        
+        .value-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .contact-info p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #6a11cb;
+        }
+        
+        .contact-method h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6a11cb;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+            background-color: #f0f4f8;
+        }
+        
+        .map-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .map-placeholder {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .map-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .map-image {
+            height: 300px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: #6a11cb;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" id="homeLink">
+                    <span class="logo-icon">🌌</span>
+                    <span>Naingalaxie</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a class="nav-link active" data-page="home">Home</a></li>
+                        <li><a class="nav-link" data-page="about">About</a></li>
+                        <li><a class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-container active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Welcome to Naingalaxie</h1>
+                <p>Innovative solutions for a digital universe</p>
+                <button class="cta-button" id="exploreBtn">Explore Our Universe</button>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>Discover what makes Naingalaxie unique</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Web Development</h3>
+                        <p>Custom websites and web applications built with cutting-edge technologies.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Mobile Apps</h3>
+                        <p>Native and cross-platform mobile applications for iOS and Android.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Digital Marketing</h3>
+                        <p>Strategic digital marketing solutions to grow your online presence.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">☁️</div>
+                        <h3>Cloud Solutions</h3>
+                        <p>Scalable cloud infrastructure and deployment services.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3 id="projectsCount">0</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="clientsCount">0</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="teamCount">0</h3>
+                        <p>Team Members</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3 id="yearsCount">0</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Contact us today and let's build something amazing together</p>
+                <a class="cta-button nav-link" data-page="contact">Get In Touch</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>About Naingalaxie</h1>
+                <p>Discover our journey, mission, and the passionate team behind our innovative solutions</p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Story</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="icon">🚀</div>
+                        <h3>Our Beginning</h3>
+                        <p>Founded in 2018, Naingalaxie started as a small team of visionaries with a passion for creating innovative digital solutions. Our journey began in a small garage with big dreams.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="icon">🎯</div>
+                        <h3>Our Mission</h3>
+                        <p>To empower businesses and individuals with cutting-edge technology solutions that simplify complex challenges and drive meaningful growth in an ever-evolving digital landscape.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="icon">🔮</div>
+                        <h3>Our Vision</h3>
+                        <p>We envision a future where technology seamlessly integrates with human needs, creating opportunities for innovation, connection, and progress across all industries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Meet Our Team</h2>
+                </div>
+                <div class="team-grid" id="teamGrid">
+                    <!-- Team members will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Values</h2>
+                </div>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">💡</div>
+                        <h3>Innovation</h3>
+                        <p>We constantly push boundaries and explore new possibilities to deliver cutting-edge solutions.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🤝</div>
+                        <h3>Collaboration</h3>
+                        <p>We believe in the power of teamwork and building strong partnerships with our clients.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🎯</div>
+                        <h3>Excellence</h3>
+                        <p>We strive for perfection in everything we do, delivering quality that exceeds expectations.</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">❤️</div>
+                        <h3>Integrity</h3>
+                        <p>We operate with honesty, transparency, and ethical practices in all our dealings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team. We'd love to hear from you!</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Get In Touch</h2>
+                        <p>Have a project in mind or just want to say hello? We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.</p>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>hello@naingalaxie.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h3>Address</h3>
+                                <p>123 Innovation Drive, Tech City, TC 12345</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <h2>Find Us</h2>
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <h3>Our Office</h3>
+                        <p>123 Innovation Drive, Tech City, TC 12345</p>
+                        <div class="map-image">
+                            <!-- In a real implementation, you would embed a Google Map here -->
+                            <p>📍 Interactive Map Would Appear Here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Naingalaxie</h3>
+                    <p>Creating innovative digital solutions for a better tomorrow.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a class="nav-link" data-page="home">Home</a></li>
+                        <li><a class="nav-link" data-page="about">About Us</a></li>
+                        <li><a class="nav-link" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Naingalaxie. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation links
+            const navLinks = document.querySelectorAll('.nav-link');
+            const homeLink = document.getElementById('homeLink');
+            const pages = document.querySelectorAll('.page-container');
+            
+            // Function to show a specific page
+            function showPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show the selected page
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId.replace('-page', '')) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Add click event to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const page = this.getAttribute('data-page');
+                    showPage(`${page}-page`);
+                });
+            });
+            
+            // Add click event to home logo
+            homeLink.addEventListener('click', function() {
+                showPage('home-page');
+            });
+            
+            // Home Page JavaScript
+            // Animated counter for stats
+            const projectsCount = document.getElementById('projectsCount');
+            const clientsCount = document.getElementById('clientsCount');
+            const teamCount = document.getElementById('teamCount');
+            const yearsCount = document.getElementById('yearsCount');
+            
+            const stats = [
+                { element: projectsCount, target: 150, duration: 2000 },
+                { element: clientsCount, target: 85, duration: 2000 },
+                { element: teamCount, target: 25, duration: 2000 },
+                { element: yearsCount, target: 5, duration: 2000 }
+            ];
+            
+            // Function to animate counting
+            function animateCounter(element, target, duration) {
+                let start = 0;
+                const increment = target / (duration / 16); // 60fps
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start);
+                    }
+                }, 16);
+            }
+            
+            // Start counters when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stats.forEach(stat => {
+                            animateCounter(stat.element, stat.target, stat.duration);
+                        });
+                        observer.disconnect();
+                    }
+                });
+            });
+            
+            if (document.querySelector('.stats')) {
+                observer.observe(document.querySelector('.stats'));
+            }
+            
+            // Explore button animation
+            const exploreBtn = document.getElementById('exploreBtn');
+            if (exploreBtn) {
+                exploreBtn.addEventListener('click', function() {
+                    this.textContent = 'Exploring...';
+                    setTimeout(() => {
+                        this.textContent = 'Explore Our Universe';
+                    }, 1500);
+                });
+            }
+            
+            // Feature cards hover effect enhancement
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // About Page JavaScript
+            // Team members data
+            const teamMembers = [
+                {
+                    name: "Alex Johnson",
+                    position: "CEO & Founder",
+                    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    name: "Sarah Williams",
+                    position: "Chief Technology Officer",
+                    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    name: "Michael Chen",
+                    position: "Lead Developer",
+                    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    name: "Emily Rodriguez",
+                    position: "Creative Director",
+                    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                }
+            ];
+            
+            // Populate team members
+            const teamGrid = document.getElementById('teamGrid');
+            if (teamGrid) {
+                teamMembers.forEach(member => {
+                    const teamMemberElement = document.createElement('div');
+                    teamMemberElement.className = 'team-member';
+                    teamMemberElement.innerHTML = `
+                        <div class="member-img" style="background-image: url('${member.image}')"></div>
+                        <div class="member-info">
+                            <h3>${member.name}</h3>
+                            <p>${member.position}</p>
+                        </div>
+                    `;
+                    teamGrid.appendChild(teamMemberElement);
+                });
+            }
+            
+            // Add animation to about cards when they come into view
+            const aboutCards = document.querySelectorAll('.about-card');
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            aboutCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                aboutObserver.observe(card);
+            });
+            
+            // Add hover effect to value items
+            const valueItems = document.querySelectorAll('.value-item');
+            valueItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Contact Page JavaScript
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simple validation
+                    if (!name || !email || !subject || !message) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address');
+                        return;
+                    }
+                    
+                    // In a real application, you would send the form data to a server here
+                    // For this example, we'll just show a success message
+                    
+                    const submitBtn = contactForm.querySelector('.submit-btn');
+                    const originalText = submitBtn.textContent;
+                    
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        alert(`Thank you, ${name}! Your message has been sent successfully. We'll get back to you soon.`);
+                        contactForm.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
+                });
+            }
+            
+            // Add animation to form elements
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach(group => {
+                const input = group.querySelector('input, textarea');
+                if (input) {
+                    input.addEventListener('focus', function() {
+                        group.style.transform = 'translateX(5px)';
+                    });
+                    
+                    input.addEventListener('blur', function() {
+                        group.style.transform = 'translateX(0)';
+                    });
+                }
+            });
+            
+            // Add interactive effect to contact methods
+            const contactMethods = document.querySelectorAll('.contact-method');
+            contactMethods.forEach(method => {
+                method.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(10px)';
+                });
+                
+                method.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
